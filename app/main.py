@@ -67,7 +67,7 @@ def liveness():
 def readiness(response: Response):
     """Sonda readiness revisa si hay conexion"""
     from .db import ping
-    
+
     if ping():
         return {"status": "ready"}
     else:
