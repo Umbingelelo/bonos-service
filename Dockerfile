@@ -26,9 +26,10 @@ RUN chown -R appuser:appuser /app /home/appuser/.local
 
 ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
+ENV PORT=8004
 
 USER appuser
 
-EXPOSE 8000
+EXPOSE 8004
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8004}"]
